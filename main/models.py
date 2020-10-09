@@ -73,6 +73,7 @@ class Team(models.Model):
 	debut_in_f1 = models.DateField(verbose_name='Дебют в Ф1')
 	country = models.CharField(max_length=30, verbose_name='Страна')  
 	image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Фото')
+	team_car_image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Фото болида')
 	is_active = models.BooleanField(default=True, db_index=True, verbose_name='Действующая команда')
 	team_history =models.TextField(default=True, verbose_name='История команды')
 	starts = models.IntegerField(default=True, verbose_name='Кол-во стартов')
@@ -82,6 +83,7 @@ class Team(models.Model):
 	podiums= models.IntegerField(default=True, verbose_name='Кол-во подиумов')
 	best_laps= models.IntegerField(default=True, verbose_name='Кол-во лучших кругов')
 	constructors_win = models.IntegerField(default=True, verbose_name='Побед в Кубке конструкторов')
+	
 
 	
 	def __str__(self):
@@ -116,7 +118,7 @@ class Track(models.Model):
 	class Meta:
 		verbose_name = 'Трасса'
 		verbose_name_plural = 'Трассы'
-		
+
 
 		
 
