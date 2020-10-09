@@ -1,0 +1,26 @@
+{% extends 'layout/basic.html' %}
+{% load thumbnail %} 
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}{{ driver.first_name }} {{ driver.last_name }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-2">{{ driver.first_name }} {{ driver.last_name }}</h2>
+
+
+
+<ul class="list-unstyled">
+	<li class="media my-5 p-3 border">
+		<img class="mr-3" src="{% thumbnail driver.image 'default' %}">
+	</li>
+
+	<li>Дата рождения: {{ driver.date_of_birth }}</li>
+	<li>Страна: {{ driver.country }}</li>
+	<li>Команда: {{ team.name }}</li>
+		
+</ul>
+
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% extends 'layout/basic.html' %}
+ 
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<h2>Трассы</h2>
+{% for track in tracks %}
+    <div class="media-body">
+    	<h3>{{ track.name }}</h3>
+	  	<ul>
+		    <li>Построена: {{ track.build }}</li>
+		    <li>Расположена: {{ track.located }}</li>
+		    <li>Рекорд круга: {{ track.record }}</li>
+	  	</ul>
+    </div>
+{% endfor %}
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends 'layout/basic.html' %}
+{% load thumbnail %} 
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<h2>Команды</h2>
+
+{% for team in teams %}
+    <div class="media-body">
+		<a href="{% url 'main:team_detail' pk=team.pk %}">{{ team.name }}</a>
+	</div>
+{% endfor %}
+
+{% endblock %}
+

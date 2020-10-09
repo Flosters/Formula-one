@@ -1,0 +1,30 @@
+
+body {
+	
+	background: linear-gradient(to right, #CCAEFC, #CCC0FC);
+
+	
+}
+
+.root {
+	font-size: larger;
+}
+
+
+.dropdown-menu {
+	background-color: #9BD96F;
+
+}
+
+@font-face {
+    font-family:Faster One; 
+    src: url(FasterOne-Regular.ttf); 
+   }
+
+header {
+	font-family: Faster One;
+}
+
+.media-body {
+	background-color: #858F7F;
+}
