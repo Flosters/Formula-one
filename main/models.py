@@ -45,11 +45,20 @@ class Driver(models.Model):
 	first_name = models.CharField(max_length=20, verbose_name='Имя')
 	last_name = models.CharField(max_length=20, verbose_name='Фамилия')
 	date_of_birth = models.DateField(verbose_name='Дата рождения')
-	country = CountryField(verbose_name='Страна')
+	country = models.CharField(max_length=30, verbose_name='Страна')  
 	image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Фото')
 	is_active = models.BooleanField(default=True, db_index=True, verbose_name='Действующий пилот?')
 	team = models.ForeignKey('Team', on_delete=models.PROTECT, verbose_name='Команда',
 								null=True, blank=True)
+	biography = models.TextField(default=True, verbose_name='Биография')
+	starts = models.IntegerField(default=True, verbose_name='Кол-во стартов')
+	wins = models.IntegerField(default=True, verbose_name='Кол-во побед')
+	pole_position= models.IntegerField(default=True, verbose_name='Кол-во поулов')
+	scores = models.IntegerField(default=True, verbose_name='Кол-во очков')
+	podiums= models.IntegerField(default=True, verbose_name='Кол-во подиумов')
+	best_laps= models.IntegerField(default=True, verbose_name='Кол-во лучших кругов')
+	championship_win = models.IntegerField(default=True, verbose_name='Побед в чемпионате')
+
 
 	def __str__(self):
 		return self.first_name 
@@ -62,9 +71,18 @@ class Team(models.Model):
 	"""Команда"""
 	name = models.CharField(max_length=20, verbose_name='Название')
 	debut_in_f1 = models.DateField(verbose_name='Дебют в Ф1')
-	country = CountryField(verbose_name='Страна')
+	country = models.CharField(max_length=30, verbose_name='Страна')  
 	image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Фото')
 	is_active = models.BooleanField(default=True, db_index=True, verbose_name='Действующая команда')
+	team_history =models.TextField(default=True, verbose_name='История команды')
+	starts = models.IntegerField(default=True, verbose_name='Кол-во стартов')
+	wins = models.IntegerField(default=True, verbose_name='Кол-во побед')
+	pole_position= models.IntegerField(default=True, verbose_name='Кол-во поулов')
+	scores = models.IntegerField(default=True, verbose_name='Кол-во очков')
+	podiums= models.IntegerField(default=True, verbose_name='Кол-во подиумов')
+	best_laps= models.IntegerField(default=True, verbose_name='Кол-во лучших кругов')
+	constructors_win = models.IntegerField(default=True, verbose_name='Побед в Кубке конструкторов')
+
 	
 	def __str__(self):
 		return self.name
@@ -90,6 +108,7 @@ class Track(models.Model):
 									 verbose_name = 'Движение' )
 	number_of_turns = models.IntegerField(verbose_name='Количество поворотов')
 	record = models.TimeField(verbose_name='Рекорд круга')
+	flag = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Флаг')
 
 	def __str__(self):
 		return self.name
@@ -97,4 +116,8 @@ class Track(models.Model):
 	class Meta:
 		verbose_name = 'Трасса'
 		verbose_name_plural = 'Трассы'
+
+
+		
+
 

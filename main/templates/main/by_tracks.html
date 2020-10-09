@@ -6,15 +6,22 @@
 {% block content %}
 <h2>Трассы</h2>
 {% for track in tracks %}
-    <div class="media-body">
-    	<h3>{{ track.name }}</h3>
-	  	<ul>
-		    <li>Построена: {{ track.build }}</li>
-		    <li>Расположена: {{ track.located }}</li>
-		    <li>Рекорд круга: {{ track.record }}</li>
-	  	</ul>
-    </div>
+
+<div class="card-deck">
+	<div class="card">
+	<img src="..." class="card-img-top" alt="...">
+		<div class="card-body">
+			<h5 class="card-title">{{ track.name }}</h5>
+	    </div>
+	</div>
+</div>
+
 {% endfor %}
+
+
+    
+
 {% endblock %}
+
 
 

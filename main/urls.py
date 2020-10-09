@@ -28,6 +28,7 @@ urlpatterns = [
 	path('teams/<int:pk>/', team_detail, name='team_detail'),
 	path('teams/', by_teams, name='by_teams'),
 	path('tracks/', by_tracks, name='by_tracks'),
+	path('gran-pri/', result_table, name='result_table'),
 	path('<str:page>/', other_page, name='other'),
 	path('', index, name='index'),
 	]

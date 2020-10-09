@@ -6,20 +6,55 @@
 {% block title %}{{ driver.first_name }} {{ driver.last_name }}{% endblock %}
 
 {% block content %}
-<h2 class="mb-2">{{ driver.first_name }} {{ driver.last_name }}</h2>
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ driver.image.url }}" class="card-img" alt="<>">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</h5>
+        <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
+        <p class="card-text">Страна: {{ driver.country }}</p>
+        <p class="card-text">Команда: {{ driver.team }}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ЛК</th>
+      <th scope="col">Гонок</th>
+      <th scope="col">Побед</th>
+      <th scope="col">Очков</th>
+      <th scope="col">Подиумов</th>
+    </tr>
+  </thead>
 
-<ul class="list-unstyled">
-	<li class="media my-5 p-3 border">
-		<img class="mr-3" src="{% thumbnail driver.image 'default' %}">
-	</li>
+  <tbody>
 
-	<li>Дата рождения: {{ driver.date_of_birth }}</li>
-	<li>Страна: {{ driver.country }}</li>
-	<li>Команда: {{ team.name }}</li>
-		
-</ul>
+    <tr>
+      <th>1</th>
+      <td>{{ driver.starts }}</td>
+      <td>{{ driver.wins }}</td>
+      <td>{{ driver.scores }}</td>
+      <td>{{ driver.podiums }}</td>
+    </tr>
+
+
+    
+
+  </tbody>
+</table>
+
+<p>{{ driver.biography }}</p>
+
+
 
 {% endblock %}
 

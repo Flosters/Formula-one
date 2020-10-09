@@ -7,21 +7,37 @@
 
 {% block content %}
 <h2 class="mb-2">{{ team.name }}</h2>
+<div>
+	<ul>
+		<li>{{ team.country }}</li>
+		<li>{{ team.debut_in_f1 }}</li>
+	</ul>
+</div>
 
 {% if drivers %}
 <ul class="list-unstyled">
 	{% for driver in drivers %}
-	<li class="media my-5 p-3 border">
-		<a href="{% url 'main:driver_detail' pk=driver.pk %}">
-		{{ driver.first_name }}{{ driver.last_name }}
-		</a>
-	<img class="mr-3" src="{% thumbnail driver.image 'default' %}">
-	</li>
-		
-</ul>
+	<<div class="container-fluid mt-3">
+		<div class="row">
+			<div class="col-md-auto">
+				<img src="{{ driver.image.url }}" class="main-image">
+			</div>	
 
-{% endfor %}
+			<div class="col">
+				<h2><a href="{% url 'main:driver_detail' pk=driver.pk %}">
+					{{ driver.first_name }} {{ driver.last_name }}</a>
+				</h2>
+				<p>Дата рождения: {{ driver.date_of_birth }}</p>
+				<p>Страна: {{ driver.country }}</p>
+				<p>Команда: {{ driver.team }}</p>
+			</div>
+		</div>
+	</div>
+
+	{% endfor %}
 {% endif %}
 {% endblock %}
+
+
 
 

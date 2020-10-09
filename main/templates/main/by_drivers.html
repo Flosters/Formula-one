@@ -4,21 +4,32 @@
 {% load static %}
 
 {% block content %}
-<h2>Гонщики</h2>
+<h2>Пилоты</h2>
+
+
 {% for driver in drivers %}
-    <div class="media-body">
-    	<h3>
-    		<a href="{% url 'main:driver_detail' pk=driver.pk %}">
-    	{{ driver.first_name }} {{ driver.last_name }}</h3>
-    		</a>
-	  	<img class="mr-3" src="{% thumbnail driver.image 'default' %}" >
-	 	<ul>
-		    <li>Дата рождения: {{ driver.date_of_birth }}</li>
-		    <li>Страна: {{ driver.country }}</li>
-		    <li>Команда: {{ driver.team }}</li>
+<div class="card mb-3" style="max-width: 540px;">
+<div class="row no-gutters">
+	    <div class="col-md-4">
+	      <img src="#" class="card-img" alt="<>">
+	    </div>
 
+	    <div class="col-md-8">
+	      <div class="card-body">
+	        <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</a></h5>
+	        <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
+	        <p class="card-text">Страна: {{ driver.country }}</p>
+	        <p class="card-text">Команда: {{ driver.team }}</p>
+	        <p><a href="{% url 'main:driver_detail' pk=driver.pk %}">Подробнее</a></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	    
+	  
+	
+ {% endfor %}
 
-	  	</ul>
-    </div>
-{% endfor %}
 {% endblock %}
+
+

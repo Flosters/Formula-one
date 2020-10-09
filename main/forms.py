@@ -58,7 +58,3 @@ class RegisterUserForm(forms.ModelForm):
 		fields = ('username', 'email', 'password1', 'password2', 'first_name', 
 				  'last_name', 'send_messages', 'favorite_team')	
 
-
-class SearchForm(forms.Form):
-	"""Строка поиска"""
-	keyword = forms.CharField(max_length=20, required=False, label='')		

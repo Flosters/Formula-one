@@ -25,8 +25,6 @@ def index(request):
 	"""Главная страница"""
 	drivers = Driver.objects.all()
 	context = {'drivers': drivers}
-	
-	
 	return render(request, 'main/index.html', context)
 
 def other_page(request, page):
@@ -162,20 +160,26 @@ def by_teams(request):
 	return render(request, 'main/by_teams.html', context)
 
 def by_tracks(request):
-	"""вывод всех трасс"""
+	"""Вывод всех трасс"""
 	tracks = Track.objects.all()
 	context = {'tracks': tracks}
 	return render(request, 'main/by_tracks.html', context)
 
 def team_detail(request, pk):
+	"""Подробно о команде"""
 	team = get_object_or_404(Team, pk=pk)
 	drivers = Driver.objects.filter(team=pk)
 	context = {'team': team, 'drivers': drivers}
 	return render(request, 'main/team_detail.html', context)	
 
 def driver_detail(request, pk):
+	"""Подробно о гонщике"""
 	driver = get_object_or_404(Driver, pk=pk)
-	team = Team.objects.filter(driver=pk)
-	context = {'driver': driver, 'team': team}
+	context = {'driver': driver}
 	return render(request, 'main/driver_detail.html', context)	
-	
+
+def result_table(request):
+	drivers = Driver.objects.all()
+	teams = Team.objects.all()
+	context = {'drivers':drivers, 'teams':teams}
+	return render(request, 'main/result_table.html', context)
