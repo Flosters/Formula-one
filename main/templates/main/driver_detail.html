@@ -12,6 +12,7 @@
     <div class="col-md-4">
       <img src="{{ driver.image.url }}" class="card-img" alt="<>">
     </div>
+
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</h5>
@@ -24,38 +25,35 @@
   </div>
 </div>
 
-
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">ЛК</th>
-      <th scope="col">Гонок</th>
-      <th scope="col">Побед</th>
-      <th scope="col">Очков</th>
-      <th scope="col">Подиумов</th>
+        <th scope="col">Гонок</th>
+        <th scope="col">Побед</th>
+        <th scope="col">Поулов</th>
+        <th scope="col">Подиумов</th>
+        <th scope="col">Лучших кругов</th>
+        <th scope="col">Очков</th>
+        <th scope="col">Побед в чемпионате</th>
     </tr>
   </thead>
-
   <tbody>
-
     <tr>
-      <th>1</th>
-      <td>{{ driver.starts }}</td>
-      <td>{{ driver.wins }}</td>
-      <td>{{ driver.scores }}</td>
-      <td>{{ driver.podiums }}</td>
+        <td>{{ driver.starts }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.pole_position }}</td>
+        <td>{{ driver.podiums }}</td>
+        <td>{{ driver.best_laps }}</td>
+        <td>{{ driver.scores }}</td>
+        <td>{{ driver.championship_win }}</td>
     </tr>
-
-
-    
-
   </tbody>
 </table>
 
+<h3>Биография</h3>
 <p>{{ driver.biography }}</p>
 
-
-
 {% endblock %}
+
 
 

@@ -116,7 +116,7 @@ class Track(models.Model):
 	class Meta:
 		verbose_name = 'Трасса'
 		verbose_name_plural = 'Трассы'
-
+		
 
 		
 
