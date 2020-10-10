@@ -6,20 +6,10 @@
 {% block content %}
 <h2>Трассы</h2>
 {% for track in tracks %}
-
-<div class="card-deck">
-	<div class="card">
-	<img src="..." class="card-img-top" alt="...">
-		<div class="card-body">
-			<h5 class="card-title">{{ track.name }}</h5>
-	    </div>
-	</div>
-</div>
-
+<a href="{% url 'main:track_detail' pk=track.pk %}">
+	<img src="{{track.flag.url }}" class="rounded-0" alt="Адаптивные изображения">
+</a>
 {% endfor %}
-
-
-    
 
 {% endblock %}
 

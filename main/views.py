@@ -178,8 +178,7 @@ def driver_detail(request, pk):
 	context = {'driver': driver}
 	return render(request, 'main/driver_detail.html', context)	
 
-def result_table(request):
-	drivers = Driver.objects.all()
-	teams = Team.objects.all()
-	context = {'drivers':drivers, 'teams':teams}
-	return render(request, 'main/result_table.html', context)
+def track_detail(request, pk):
+	track = get_object_or_404(Track, pk=pk)
+	context = {'track': track}
+	return render(request, 'main/track_detail.html', context)

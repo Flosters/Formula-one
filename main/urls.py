@@ -27,8 +27,8 @@ urlpatterns = [
 	path('drivers/', by_drivers, name='by_drivers'),
 	path('teams/<int:pk>/', team_detail, name='team_detail'),
 	path('teams/', by_teams, name='by_teams'),
+	path('tracks/<int:pk>/', track_detail, name='track_detail'),
 	path('tracks/', by_tracks, name='by_tracks'),
-	path('gran-pri/', result_table, name='result_table'),
 	path('<str:page>/', other_page, name='other'),
 	path('', index, name='index'),
 	]

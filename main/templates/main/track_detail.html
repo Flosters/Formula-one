@@ -1,0 +1,19 @@
+{% extends 'layout/basic.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}{{ track.name }}{% endblock %}
+
+{% block content %}
+<h1 class="track-name">{{ track.name }}</h1>
+
+
+  
+      
+   <div class="text-center">
+  <img src="{{ track.image.url }}" class="rounded" alt="...">
+</div>
+
+    
+
+{% endblock %}
