@@ -86,7 +86,7 @@ class RegisterDoneView(TemplateView):
 
 
 def user_activate(request, sign):
-	"""активация нового пользователя"""
+	"""Активация нового пользователя"""
 	try:
 		username = signer.unsign(sign)
 	except BadSignature:
@@ -179,6 +179,7 @@ def driver_detail(request, pk):
 	return render(request, 'main/driver_detail.html', context)	
 
 def track_detail(request, pk):
+	"""Подробно о трассе"""
 	track = get_object_or_404(Track, pk=pk)
 	context = {'track': track}
 	return render(request, 'main/track_detail.html', context)
