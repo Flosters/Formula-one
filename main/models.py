@@ -120,6 +120,18 @@ class Track(models.Model):
 		verbose_name_plural = 'Трассы'
 
 
-		
+class Comment(models.Model):
+	"""Комментарий"""
+	driver = models.ForeignKey(Driver, on_delete=models.CASCADE, verbose_name='Пилот')
+	author = models.CharField(max_length=30, verbose_name='Автор')
+	content = models.TextField(verbose_name='Текст')
+	is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить на экран?')
+	created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликован')
+
+	class Meta:
+		verbose_name_plural = 'Комментарии'
+		verbose_name = 'Комментарий'
+		ordering = ['created_at']
+				
 
 
