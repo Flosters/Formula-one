@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
 
-from .models import AdvUser, user_registrated
+from .models import AdvUser, user_registrated, Comment
 
 class ChangeUserInfoForm(forms.ModelForm):
 	"""Форма для изменения личных данных"""
@@ -57,4 +58,24 @@ class RegisterUserForm(forms.ModelForm):
 		model = AdvUser
 		fields = ('username', 'email', 'password1', 'password2', 'first_name', 
 				  'last_name', 'send_messages', 'favorite_team')	
+
+
+class UserCommentForm(forms.ModelForm):
+	"""Форма для занесения комментариев
+		зарег. пользователям"""
+	class Meta:
+		model = Comment
+		exclude = ('is_active',)
+		widgets = {'driver' : forms.HiddenInput}
+
+class GuestCommentForm(forms.ModelForm):
+	"""Форма для занесения комментариев
+		гостями"""		
+	captcha = CaptchaField(label='Введите текст с картинки', 
+							error_messages={'invalid':'Неправилный текст'})
+	class Meta:
+		model = Comment
+		exclude = ('is_active',)
+		widgets = {'driver' : forms.HiddenInput}							
+		
 

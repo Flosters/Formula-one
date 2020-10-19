@@ -14,8 +14,8 @@ from django.core.signing import BadSignature
 from django.contrib.auth import logout
 from django.contrib import messages
 
-from .models import AdvUser, Driver, Team, Track
-from .forms import ChangeUserInfoForm, RegisterUserForm
+from .models import AdvUser, Driver, Team, Track, Comment
+from .forms import ChangeUserInfoForm, RegisterUserForm, UserCommentForm, GuestCommentForm
 from .utilities import signer
  
 
@@ -175,7 +175,30 @@ def team_detail(request, pk):
 def driver_detail(request, pk):
 	"""Подробно о гонщике"""
 	driver = get_object_or_404(Driver, pk=pk)
-	context = {'driver': driver}
+	comments = Comment.objects.filter(driver=pk, is_active=True)
+
+	#заносим в поле driver ключ текущего пилота
+	initial = {'driver': driver.pk}
+
+	# Если пользователь авторизован, его имя заносим как автора коммментария
+	if request.user.is_authenticated:
+		initial['author'] = request.user.username
+		form_class = UserCommentForm
+	else:
+		form_class = GuestCommentForm
+
+	form = form_class(initial=initial)
+	if request.method == 'POST':
+		c_form = form_class(request.POST)
+		if c_form.is_valid():
+			c_form.save()
+			messages.add_message(request, messages.SUCCESS, 'Комментарий добавлен')
+
+		else:
+			form = c_form
+			messages.add_message(request, messages.WARNING, 'Комментарий не добавлен')
+
+	context = {'driver': driver, 'comments': comments, 'form': form}
 	return render(request, 'main/driver_detail.html', context)	
 
 def track_detail(request, pk):
