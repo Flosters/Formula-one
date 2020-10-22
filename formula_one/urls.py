@@ -24,6 +24,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('', include('main.urls', namespace='')),
     path('social/', include('social_django.urls', namespace='social')),
+    path('api/', include('api.urls')),
 ]
 
 if settings.DEBUG:
