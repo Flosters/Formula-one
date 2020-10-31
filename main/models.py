@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.dispatch import Signal
-
+from datetime import datetime
 from .utilities import send_activation_notification, get_timestamp_path
 
 from django_countries.fields import CountryField
@@ -63,6 +63,10 @@ class Driver(models.Model):
 	def __str__(self):
 		return self.first_name 
 
+	# Вычисление возраста
+	def age(self):
+		return int((datetime.now().date() - self.date_of_birth).days / 365.25)	
+
 	class Meta:
 		verbose_name = 'Пилот'
 		verbose_name_plural = 'Пилоты'
@@ -85,9 +89,10 @@ class Team(models.Model):
 	constructors_win = models.IntegerField(default=True, verbose_name='Побед в Кубке конструкторов')
 	
 
-	
 	def __str__(self):
 		return self.name
+
+
 
 	class Meta:
 		verbose_name = 'Команда'

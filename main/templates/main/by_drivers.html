@@ -16,6 +16,7 @@
 	      <div class="card-body">
 	        <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</a></h5>
 	        <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
+	        <p class="card-text">Возраст: {{ driver.age }}</p>
 	        <p class="card-text">Страна: {{ driver.country }}</p>
 	        <p class="card-text">Команда: {{ driver.team }}</p>
 	        <p><a href="{% url 'main:driver_detail' pk=driver.pk %}">Подробнее</a></p>
