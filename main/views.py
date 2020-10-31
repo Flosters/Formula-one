@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 from django.core.signing import BadSignature
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from .models import AdvUser, Driver, Team, Track, Comment
 from .forms import ChangeUserInfoForm, RegisterUserForm, UserCommentForm, GuestCommentForm
@@ -150,7 +151,14 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
 def by_drivers(request):
 	"""Вывод всех пилотов"""
 	drivers = Driver.objects.all()
-	context = {'drivers': drivers}
+	# Использование пагинатора
+	paginator = Paginator(drivers, 10)
+	if 'page' in request.GET:
+		page_num = request.GET['page']
+	else:
+		page_num = 2
+	page = paginator.get_page(page_num)
+	context = {'page': page, 'drivers': page.object_list}
 	return render(request, 'main/by_drivers.html', context)
 
 def by_teams(request):
