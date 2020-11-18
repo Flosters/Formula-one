@@ -72,7 +72,7 @@ class GuestCommentForm(forms.ModelForm):
 	"""Форма для занесения комментариев
 		гостями"""		
 	captcha = CaptchaField(label='Введите текст с картинки', 
-							error_messages={'invalid':'Неправилный текст'})
+							error_messages={'invalid':'Неправильный текст'})
 	class Meta:
 		model = Comment
 		exclude = ('is_active',)

@@ -152,11 +152,11 @@ def by_drivers(request):
 	"""Вывод всех пилотов"""
 	drivers = Driver.objects.all()
 	# Использование пагинатора
-	paginator = Paginator(drivers, 10)
+	paginator = Paginator(drivers, 5)
 	if 'page' in request.GET:
 		page_num = request.GET['page']
 	else:
-		page_num = 2
+		page_num = 1
 	page = paginator.get_page(page_num)
 	context = {'page': page, 'drivers': page.object_list}
 	return render(request, 'main/by_drivers.html', context)
