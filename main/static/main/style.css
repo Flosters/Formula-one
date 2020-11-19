@@ -31,8 +31,18 @@ header {
 
 .card {
 	background-color: #c8dbd7;
+	border: 2px solid black;
+    
 }
 
 .track {
 	text-align: center;
+}
+
+.feed-header {
+	background-color: #688E99;
+}
+
+.feed-body {
+	background-color: #E3D8AC;
 }

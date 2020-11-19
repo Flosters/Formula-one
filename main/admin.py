@@ -1,7 +1,7 @@
 from django.contrib import admin
 import datetime
 
-from .models import AdvUser, Driver, Team, Track, Comment
+from .models import AdvUser, Driver, Team, Track, Comment, Post
 from .utilities import send_activation_notification
 
 def send_activation_notifications(modeladmin, request, queryset):
@@ -71,10 +71,14 @@ class TrackAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
 	list_display = ('driver', 'author', 'created_at', 'content')
 
-	
+class PostAdmin(admin.ModelAdmin):
+	list_display = ('title', 'author', 'content', 'created_at')
+	search_fields = ('title', 'author', 'content', 'created_at')
 
 admin.site.register(AdvUser, AdvUserAdmin)
 admin.site.register(Driver, DriverAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Track, TrackAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Post, PostAdmin)
+

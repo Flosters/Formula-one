@@ -138,5 +138,16 @@ class Comment(models.Model):
 		verbose_name = 'Комментарий'
 		ordering = ['created_at']
 				
+class Post(models.Model):
+	"""Статья"""
+	title = models.CharField(max_length=200, verbose_name='Название статьи')
+	author = models.ForeignKey(AdvUser, on_delete=models.CASCADE, verbose_name='Автор')
+	content = models.TextField(verbose_name='Текст')
+	created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликована')
+	def __str__(self):
+		return self.title
 
-
+	class Meta:
+		verbose_name_plural = 'Статья'
+		verbose_name = 'Статьи'
+		ordering = ['-created_at']

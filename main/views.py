@@ -15,7 +15,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.core.paginator import Paginator
 
-from .models import AdvUser, Driver, Team, Track, Comment
+from .models import AdvUser, Driver, Team, Track, Comment, Post
 from .forms import ChangeUserInfoForm, RegisterUserForm, UserCommentForm, GuestCommentForm
 from .utilities import signer
  
@@ -24,8 +24,8 @@ from .utilities import signer
 
 def index(request):
 	"""Главная страница"""
-	drivers = Driver.objects.all()
-	context = {'drivers': drivers}
+	posts = Post.objects.all()[:10]
+	context = {'posts': posts}
 	return render(request, 'main/index.html', context)
 
 def other_page(request, page):
