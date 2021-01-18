@@ -14,6 +14,7 @@ from django.core.signing import BadSignature
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.views.decorators.cache import cache_page
 
 from .models import AdvUser, Driver, Team, Track, Comment, Post
 from .forms import ChangeUserInfoForm, RegisterUserForm, UserCommentForm, GuestCommentForm
@@ -148,6 +149,8 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
 	"""Уведомление об успешной смене пароля"""
 	template_name = 'main/password_reset_complete.html'
 
+# кеширование страницы 600 сек
+@cache_page(600)
 def by_drivers(request):
 	"""Вывод всех пилотов"""
 	drivers = Driver.objects.all()
@@ -161,18 +164,21 @@ def by_drivers(request):
 	context = {'page': page, 'drivers': page.object_list}
 	return render(request, 'main/by_drivers.html', context)
 
+@cache_page(600)
 def by_teams(request):
 	"""Вывод всех команд"""
 	teams = Team.objects.all()
 	context = {'teams': teams}
 	return render(request, 'main/by_teams.html', context)
 
+@cache_page(600)
 def by_tracks(request):
 	"""Вывод всех трасс"""
 	tracks = Track.objects.all()
 	context = {'tracks': tracks}
 	return render(request, 'main/by_tracks.html', context)
 
+@cache_page(600)
 def team_detail(request, pk):
 	"""Подробно о команде"""
 	team = get_object_or_404(Team, pk=pk)
@@ -180,6 +186,7 @@ def team_detail(request, pk):
 	context = {'team': team, 'drivers': drivers}
 	return render(request, 'main/team_detail.html', context)	
 
+@cache_page(600)
 def driver_detail(request, pk):
 	"""Подробно о гонщике"""
 	driver = get_object_or_404(Driver, pk=pk)
@@ -209,6 +216,7 @@ def driver_detail(request, pk):
 	context = {'driver': driver, 'comments': comments, 'form': form}
 	return render(request, 'main/driver_detail.html', context)	
 
+@cache_page(600)
 def track_detail(request, pk):
 	"""Подробно о трассе"""
 	track = get_object_or_404(Track, pk=pk)
