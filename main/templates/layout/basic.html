@@ -116,13 +116,15 @@
 
 		
 <!--------------------------------Секция основного контента--------------------------------- -->
-			<section class="col border py-2">
+			<section class="col  py-2">
+
 				{% bootstrap_messages %}
 				{% block content %}
 				{% endblock %}
+				
 			</section>
 
-		
+			
 <!--------------------------------------------------------------------------------------------- -->
 		<footer class="mt-3"> 
 			<a class="font-italic" href="{% url 'main:other' page='about' %}">О сайте</a>

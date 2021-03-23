@@ -1,7 +1,7 @@
 
 body {
 	
-	background: linear-gradient(to right, #CCAEFC, #CCC0FC);
+	
 
 	
 }
@@ -40,24 +40,45 @@ header {
 }
 
 .feed {
-       background-color: #EEF;
-       color: #4D4B4B;
-          border: 1px solid #999999; 
-       border-radius: 10px 10px;
-       -moz-border-radius: 10px 10px;
-       -webkit-border-radius: 10px 10px;
-       box-shadow: 2px 2px 3px #999;
-      -webkit-box-shadow: 2px 2px 3px #999;
-      -moz-box-shadow: 2px 2px 3px #999;
+       background-color: #CAE07D;
+      /* рамка */
+      border-style: groove;
+      border-color: grey;
+      border-radius: 25px;
+      /* отступы */
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 20px;
+      /* тень */
+      box-shadow: 8px 8px #3C4045; 
+      
 
 }
 
 .feed-header {
-         background-color: #CFC467;
-         padding: 5px 10px 15px 20px;
+         background-color: #7E8691;
+         padding: 10px 5px 10px 10px;
+         text-align: center;
+         border-bottom: 2px solid;
+         border-radius: 20px;
 }
 
 .feed-body {
 	         padding: 5px 10px 15px 20px;
 	         
+}
+
+.layer1 {
+          float: left;
+          width: 70%;
+}
+
+.layer2 {
+          float: right;
+          width: 30%;
+}
+
+.clear {
+
+      clear: left;
 }
