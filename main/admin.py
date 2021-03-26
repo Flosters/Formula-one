@@ -10,7 +10,9 @@ def send_activation_notifications(modeladmin, request, queryset):
 		if not rec.is_activated:
 			send_activation_notification(rec)
 	modeladmin.message_user(request, 'Письма с оповещениями отправлены')
+
 send_activation_notifications.short_description = 'Отправка писем с оповещениями об активации'
+
 
 class NonactivatedFilter(admin.SimpleListFilter):
 	title = 'Прошли активацию?'
@@ -34,6 +36,7 @@ class NonactivatedFilter(admin.SimpleListFilter):
 			d = datetime.date.today() - datetime.timedelta(weeks=7)
 			return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
 
+
 class AdvUserAdmin(admin.ModelAdmin):
 	list_display = ('__str__', 'is_activated', 'date_joined' )
 	search_fields = ('username', 'email', 'first_name', 'last_name', 'favorite_team')						
@@ -56,11 +59,13 @@ class DriverAdmin(admin.ModelAdmin):
 	list_display = ('first_name', 'last_name', 'date_of_birth', 'country','team', 'is_active' )
 
 	search_fields = ('last_name', 'country', 'is_active')						
+
 	
 class TeamAdmin(admin.ModelAdmin):
 	list_display = ('name', 'debut_in_f1', 'country', 'is_active' )
 
 	search_fields = ('last_name', 'country', 'is_active')	
+
 	
 class TrackAdmin(admin.ModelAdmin):
 	list_display = ('name', 'build', 'located', 'drive', 'length', 'width',
@@ -68,12 +73,15 @@ class TrackAdmin(admin.ModelAdmin):
 
 	search_fields = ('name', 'build', 'located', 'drive', 'is_active')
 
+
 class CommentAdmin(admin.ModelAdmin):
 	list_display = ('driver', 'author', 'created_at', 'content')
+
 
 class PostAdmin(admin.ModelAdmin):
 	list_display = ('title', 'author', 'content', 'created_at')
 	search_fields = ('title', 'author', 'content', 'created_at')
+
 
 admin.site.register(AdvUser, AdvUserAdmin)
 admin.site.register(Driver, DriverAdmin)

@@ -6,54 +6,55 @@
 {% block title %}Пилоты{% endblock %}
 
 {% block content %}
-<h2>Пилоты</h2>
-{% for driver in drivers %}
-<div class="card mb-3" style="max-width: 540px;">
-	<div class="row no-gutters">
 
-	    <div class="col-md-4">
-	    	<img src="{{ driver.image.url }}" class="card-img" alt="<>">
-   		</div>
-	    <div class="col-md-8">
-		    <div class="card-body">
-		        <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</a></h5>
-		        <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
-		        <p class="card-text">Возраст: {{ driver.age }}</p>
-		        <p class="card-text">Страна: {{ driver.country }}</p>
-		        <p class="card-text">Команда: {{ driver.team }}</p>
-		        <p><a href="{% url 'main:driver_detail' pk=driver.pk %}">Подробнее</a></p>
-		    </div>
-	    </div>
-	</div>
-</div>	
-{% endfor %}
+    <h2>Пилоты</h2>
+
+
+
+<div class="d-flex justify-content-space-evenly">
+    {% for driver in drivers %}
+      
+            <div class="card" style="width: 18rem;">
+            <img src="{{ driver.image.url }}" class="card-img" alt="<>">
+            <div class="card-body">
+              <h5 class="card-title">Название карточки</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
+            </div>
+          </div>
+    {% endfor %}
+ </div>   
 
 
 <nav aria-label="...">
-  <ul class="pagination pagination-sm">
+        <ul class="pagination pagination-sm">
 
-  	{% if page.has_previous %}
-  	<li class="page-item">
-  		<a class="page-link" href="?page={{ page.previous_page_number }}">{{ page.previous_page_number}}</a>
-  	</li>
-  	{% endif %}
+          {% if page.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page.previous_page_number }}">{{ page.previous_page_number}}</a>
+            </li>
+          {% endif %}
 
-    <li class="page-item active" aria-current="page">
-    	<span class="page-link">
-   			Страница {{ page.number }} из {{ page.paginator.num_pages }}
-    		<span class="sr-only">{{ page.number }}</span>
-    	</span>
-    </li>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">
+              Страница {{ page.number }} из {{ page.paginator.num_pages }}
+              <span class="sr-only">{{ page.number }}</span>
+            </span>
+          </li>
 
-    {% if page.has_next %}
-    <li class="page-item">
-    	<a class="page-link" href="?page={{ page.next_page_number }}">{{ page.next_page_number }}</a>
-    </li>
-    {% endif %}
+          {% if page.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page.next_page_number }}">{{ page.next_page_number }}</a>
+            </li>
+          {% endif %}
 
-  </ul>
-</nav>
+        </ul>
+</nav>           
 
+
+
+
+   
 {% endblock %}
 
 

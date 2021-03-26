@@ -13,6 +13,7 @@ class ChangeUserInfoForm(forms.ModelForm):
 		model = AdvUser
 		fields = ('username', 'email', 'first_name', 'last_name', 'send_messages', 'favorite_team')
 
+
 class RegisterUserForm(forms.ModelForm):
 	"""Форма для регистрации нового пользователя"""		
 	email = forms.EmailField(required=True, label='Адрес электронной почты')
@@ -67,6 +68,7 @@ class UserCommentForm(forms.ModelForm):
 		model = Comment
 		exclude = ('is_active',)
 		widgets = {'driver' : forms.HiddenInput}
+
 
 class GuestCommentForm(forms.ModelForm):
 	"""Форма для занесения комментариев

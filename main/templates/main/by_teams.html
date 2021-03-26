@@ -6,10 +6,13 @@
 {% block title %}Команды{% endblock %}
 
 {% block content %}
-<h2>Команды</h2>
-{% for team in teams %}
-	<a href="{% url 'main:team_detail' pk=team.pk %}">
-	<img src="{{ team.image.url }}" alt="..." class="img-thumbnail">
-	</a>
-{% endfor %}
+
+	<h2>Команды</h2>
+	
+	{% for team in teams %}
+		<a href="{% url 'main:team_detail' pk=team.pk %}">
+			<img src="{{ team.image.url }}" alt="..." class="img-thumbnail">
+		</a>
+	{% endfor %}
+
 {% endblock %}

@@ -24,134 +24,55 @@
 	</div>
 
 	<div class="layer2">
-		<table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Имя</th>
-      <th scope="col">Фамилия</th>
-      <th scope="col">Очки</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry </td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td colspan="2">Larry </td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td colspan="2">Larry</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">11</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">12</th>
-      <td colspan="2">Larry</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">13</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">14</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">15</th>
-      <td colspan="2">Larry </td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">16</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">17</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">18</th>
-      <td colspan="2">Larry </td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">19</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">20</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    
+		<p class="table-result"><b>Личный зачет</b></p>
 
-  </tbody>
-</table>
+		<table class="table table-sm"  style="text-align: center;">
+			<thead class="thead-dark">
+				    <tr>
+				      <th scope="col">Место</td>
+				      <th scope="col">Имя</th>
+				      <th scope="col">Фамилия</th>
+				      <th scope="col">Очки</th>
+				    </tr>
+			</thead>
+
+			<tbody class="thead-light">
+				{% for driver in drivers %}
+				
+				    <tr class="table-secondary">
+				    	<td scope="col">{{ forloop.counter }} </td>
+				        <td scope="col" style="text-align: left;">{{ driver.first_name }}</td>
+				        <td scope="col">{{ driver.last_name }}</td>
+				        <td scope="col">{{ driver.scores_season }}</td>
+				    </tr>
+				    
+				{% endfor %}  
+			</tbody>
+		</table>
+
+		<p class="table-result"><b>Кубок конструкторов</b></p>
+
+		<table class="table table-sm" style="text-align: center;">
+			<thead class="thead-dark">
+				    <tr>
+				      <th scope="col">Место</th>
+				      <th scope="col">Команда</th>
+				      <th scope="col">Очки</th>
+				    </tr>
+			</thead>
+
+			<tbody class="thead-light">
+				{% for team in teams %}
+				
+				    <tr  class="table-secondary">
+				    	<td scope="col">{{ forloop.counter }} </td>
+				        <td scope="col">{{ team.name }}</td>
+				        <td scope="col">{{ team.scores_season }}</td>
+				    </tr>
+				    
+				{% endfor %}  
+			</tbody>
+		</table>
 
 	</div>
 

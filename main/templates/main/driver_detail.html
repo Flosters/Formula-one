@@ -7,72 +7,74 @@
 
 {% block content %}
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="{{ driver.image.url }}" class="card-img" alt="<>">
-    </div>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ driver.image.url }}" class="card-img" alt="<>">
+      </div>
 
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</h5>
-        <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
-        <p class="card-text">Возраст: {{ driver.age }}</p>
-        <p class="card-text">Страна: {{ driver.country }}</p>
-        <p class="card-text">Команда: {{ driver.team }}</p>
-
+      <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</h5>
+            <p class="card-text">Дата рождения: {{ driver.date_of_birth }}</p>
+            <p class="card-text">Возраст: {{ driver.age }}</p>
+            <p class="card-text">Страна: {{ driver.country }}</p>
+            <p class="card-text">Команда: {{ driver.team }}</p>
+          </div>
       </div>
     </div>
   </div>
-</div>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-        <th scope="col">Гонок</th>
-        <th scope="col">Побед</th>
-        <th scope="col">Поулов</th>
-        <th scope="col">Подиумов</th>
-        <th scope="col">Лучших кругов</th>
-        <th scope="col">Очков</th>
-        <th scope="col">Побед в чемпионате</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <td>{{ driver.starts }}</td>
-        <td>{{ driver.wins }}</td>
-        <td>{{ driver.pole_position }}</td>
-        <td>{{ driver.podiums }}</td>
-        <td>{{ driver.best_laps }}</td>
-        <td>{{ driver.scores }}</td>
-        <td>{{ driver.championship_win }}</td>
-    </tr>
-  </tbody>
-</table>
-<p>*На момент окончания сезона 2020</p>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Гонок</th>
+            <th scope="col">Побед</th>
+            <th scope="col">Поулов</th>
+            <th scope="col">Подиумов</th>
+            <th scope="col">Лучших кругов</th>
+            <th scope="col">Очков</th>
+            <th scope="col">Побед в чемпионате</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ driver.starts }}</td>
+            <td>{{ driver.wins }}</td>
+            <td>{{ driver.pole_position }}</td>
+            <td>{{ driver.podiums }}</td>
+            <td>{{ driver.best_laps }}</td>
+            <td>{{ driver.scores }}</td>
+            <td>{{ driver.championship_win }}</td>
+        </tr>
+    </tbody>
+  </table>
+  <p>*На момент окончания сезона 2020</p>
 
 
-<h3>Биография</h3>
-<p>{{ driver.biography }}</p>
+  <h3>Биография</h3>
+  <p>{{ driver.biography }}</p>
 
   <h4 class="mt-5">Новый комментарий</h4>
   <form method="post">
-    {% csrf_token %}
-    {% bootstrap_form form layout='horizontal' %}
-    {% buttons submit='Добавить' %}{% endbuttons %}
+      {% csrf_token %}
+      {% bootstrap_form form layout='horizontal' %}
+      {% buttons submit='Добавить' %}{% endbuttons %}
   </form>
+
   {% if comments %}
-  <div class="mt-5">
-    {% for comment in comments %}
-    <div class="my-2 p2 border">
-      <h5>{{ comment.author }}</h5>
-      <p>{{ comment.content }}</p>
-      <p class="text-right font-italic">{{ comment.created_at }}</p> 
+    <div class="mt-5">
+      {% for comment in comments %}
+        <div class="my-2 p2 border">
+          <h5>{{ comment.author }}</h5>
+          <p>{{ comment.content }}</p>
+          <p class="text-right font-italic">{{ comment.created_at }}</p> 
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
   {% endif %}
+
 {% endblock %}
 
 

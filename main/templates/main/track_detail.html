@@ -5,23 +5,23 @@
 {% block title %}{{ track.name }}{% endblock %}
 
 {% block content %}
-<h1 class="track">{{ track.name }}</h1>
+
+    <h1 class="track">{{ track.name }}</h1>
     <div class="text-center">
-      <img src="{{ track.image.url }}"  style="max-width: 100%; height: auto;" class="rounded" alt="...">
+        <img src="{{ track.image.url }}"  style="max-width: 100%; height: auto;" class="rounded" alt="Изображение трассы">
     </div>
 
-<div>
-  <h2>Характеристики трассы</h2>
-    <ul>
-      <li>Построена: <b>{{ track.build }}</b></li>
-      <li>Расположение: <b>{{ track.located }}</b></li>
-      <li>Длина трассы: <b>{{ track.length }} м.</b></li>
-      <li>Средняя ширина трассы: <b>{{ track.width }} м.</b></li>
-      <li>Движение: <b>{{ track.drive }}</b></li>
-      <li>Количество поворотов: <b>{{ track.number_of_turns }}</b></li>
-      <li>Рекорд трассы: <b>{{ track.record }} мин.</b></li>
-    </ul>
-</div>
-    
+    <div>
+        <h2>Характеристики трассы</h2>
+        <ul>
+            <li>Построена: <b>{{ track.build }}</b></li>
+            <li>Расположение: <b>{{ track.located }}</b></li>
+            <li>Длина трассы: <b>{{ track.length }} м.</b></li>
+            <li>Средняя ширина трассы: <b>{{ track.width }} м.</b></li>
+            <li>Движение: <b>{{ track.drive }}</b></li>
+            <li>Количество поворотов: <b>{{ track.number_of_turns }}</b></li>
+            <li>Рекорд трассы: <b>{{ track.record }} мин.</b></li>
+        </ul>
+    </div>
 
 {% endblock %}

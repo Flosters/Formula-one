@@ -26,8 +26,11 @@ from .utilities import signer
 def index(request):
 	"""Главная страница"""
 	posts = Post.objects.all()[:10]
-	context = {'posts': posts}
+	drivers = Driver.objects.filter(is_active=True).order_by('-scores_season')
+	teams = Team.objects.filter(is_active=True).order_by('-scores_season')
+	context = {'posts': posts, 'drivers': drivers, 'teams': teams}
 	return render(request, 'main/index.html', context)
+
 
 def other_page(request, page):
 	try:
@@ -36,9 +39,11 @@ def other_page(request, page):
 		raise Http404	
 	return HttpResponse(template.render(request=request))	
 
+
 class UserLoginView(LoginView):
 	"""Странциа входа"""
 	template_name = 'main/login.html'
+
 
 # Декоратор
 # Допускает к странице только пользователей,
@@ -48,9 +53,11 @@ def profile(request):
 	"""Профиля"""
 	return render(request, 'main/profile.html')
 
+
 class UserLogoutView(LoginRequiredMixin, LogoutView):
 	"""Выход с сайта"""
 	template_name = 'main/logout.html'
+
 
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 	"""Правки личных данных"""
@@ -67,7 +74,8 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 	def get_object(self, queryset=None):
 		if not queryset:
 			queryset = self.get_queryset()
-		return get_object_or_404(queryset, pk=self.user_id)		
+		return get_object_or_404(queryset, pk=self.user_id)	
+
 
 class UserPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
 	"""Изменения пароля"""
@@ -75,12 +83,14 @@ class UserPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordCh
 	success_url = reverse_lazy('main:profile')
 	success_message = 'Пароль изменен'
 
+
 class RegisterUserView(CreateView):
 	"""Регистрации"""
 	model = AdvUser
 	template_name = 'main/register_user.html'
 	form_class = RegisterUserForm
 	success_url = reverse_lazy('main:register_done')
+
 
 class RegisterDoneView(TemplateView):
 	"""Сообщение об успешной регистрации"""	
@@ -103,7 +113,8 @@ def user_activate(request, sign):
 		user.is_activated = True
 		user.save()
 
-	return render(request, template)			
+	return render(request, template)		
+
 
 class DeleteUserView(DeleteView):
 	"""Удаление пользователя"""	
@@ -134,7 +145,6 @@ class UserPasswordResetView(PasswordResetView):
 	success_url = reverse_lazy('main:password_reset_done')
 	
 
-
 class UserPasswordResetDoneView(PasswordResetDoneView):
 	"""Уведомление об отправке письма"""
 	template_name = 'main/email_sent.html'
@@ -145,9 +155,11 @@ class UserPasswordResetConfirmView(PasswordResetConfirmView):
 	template_name = 'main/password_reset_confirm.html'
 	success_url = reverse_lazy('main:password_reset_complete')
 
+
 class UserPasswordResetCompleteView(PasswordResetCompleteView):
 	"""Уведомление об успешной смене пароля"""
 	template_name = 'main/password_reset_complete.html'
+
 
 # кеширование страницы 600 сек
 @cache_page(600)
@@ -155,7 +167,7 @@ def by_drivers(request):
 	"""Вывод всех пилотов"""
 	drivers = Driver.objects.all()
 	# Использование пагинатора
-	paginator = Paginator(drivers, 5)
+	paginator = Paginator(drivers, 10)
 	if 'page' in request.GET:
 		page_num = request.GET['page']
 	else:
@@ -164,12 +176,14 @@ def by_drivers(request):
 	context = {'page': page, 'drivers': page.object_list}
 	return render(request, 'main/by_drivers.html', context)
 
+
 @cache_page(600)
 def by_teams(request):
 	"""Вывод всех команд"""
 	teams = Team.objects.all()
 	context = {'teams': teams}
 	return render(request, 'main/by_teams.html', context)
+
 
 @cache_page(600)
 def by_tracks(request):
@@ -178,13 +192,15 @@ def by_tracks(request):
 	context = {'tracks': tracks}
 	return render(request, 'main/by_tracks.html', context)
 
+
 @cache_page(600)
 def team_detail(request, pk):
 	"""Подробно о команде"""
 	team = get_object_or_404(Team, pk=pk)
 	drivers = Driver.objects.filter(team=pk)
 	context = {'team': team, 'drivers': drivers}
-	return render(request, 'main/team_detail.html', context)	
+	return render(request, 'main/team_detail.html', context)
+
 
 @cache_page(600)
 def driver_detail(request, pk):
@@ -215,6 +231,7 @@ def driver_detail(request, pk):
 
 	context = {'driver': driver, 'comments': comments, 'form': form}
 	return render(request, 'main/driver_detail.html', context)	
+	
 
 @cache_page(600)
 def track_detail(request, pk):

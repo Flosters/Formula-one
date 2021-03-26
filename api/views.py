@@ -14,6 +14,7 @@ def driver_list(request):
 		serializer = DriverSerializer(drivers, many=True)
 		return Response(serializer.data)
 
+
 @api_view(['GET'])
 def team_list(request):
 	if request.method == 'GET':
@@ -21,9 +22,11 @@ def team_list(request):
 		serializer = TeamSerializer(teams, many=True)
 		return Response(serializer.data)
 
+
 class DriverDetailView(RetrieveAPIView):
 	queryset = Driver.objects.filter(is_active=True)
 	serializer_class = DriverDetailSerializer	
+
 
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly,))

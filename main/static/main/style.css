@@ -1,42 +1,38 @@
 
 body {
-	
-	
-
-	
+    	background: url(background.jpg) no-repeat;
+      background-size: cover;
 }
 
 .root {
-	font-size: larger;
+	    font-size: larger;
 }
 
 
 .dropdown-menu {
-	background-color: #9BD96F;
-
+	    background-color: #9BD96F;
 }
 
 @font-face {
-    font-family:Faster One; 
-    src: url(FasterOne-Regular.ttf); 
-   }
+      font-family:Faster One; 
+      src: url(FasterOne-Regular.ttf); 
+}
 
 header {
-	font-family: Faster One;
+	    font-family: Faster One;
 }
 
 .media-body {
-	background-color: #858F7F;
+	    background-color: #858F7F;
 }
 
 .card {
-	background-color: #c8dbd7;
-	border: 2px solid black;
-    
+    	background-color: #c8dbd7;
+    	border: 2px solid black;
 }
 
 .track {
-	text-align: center;
+	    text-align: center;
 }
 
 .feed {
@@ -51,34 +47,45 @@ header {
       margin-top: 20px;
       /* тень */
       box-shadow: 8px 8px #3C4045; 
-      
-
 }
 
 .feed-header {
-         background-color: #7E8691;
-         padding: 10px 5px 10px 10px;
-         text-align: center;
-         border-bottom: 2px solid;
-         border-radius: 20px;
+      background-color: #7E8691;
+      padding: 10px 5px 10px 10px;
+      text-align: center;
+      border-bottom: 2px solid;
+      border-radius: 20px;
 }
 
 .feed-body {
-	         padding: 5px 10px 15px 20px;
-	         
+      padding: 5px 10px 15px 20px;
 }
 
 .layer1 {
-          float: left;
-          width: 70%;
+      float: left;
+      width: 70%;
 }
 
 .layer2 {
-          float: right;
-          width: 30%;
+      float: right;
+      width: 30%;
 }
 
 .clear {
-
       clear: left;
+}
+
+.table-result{
+      text-align: center;
+      font-family: Verdana;
+}
+
+
+
+footer {
+      color: black;
+}
+
+.d-flex {
+      flex-wrap: wrap;
 }

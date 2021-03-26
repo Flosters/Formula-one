@@ -6,12 +6,15 @@
 {% block title %}Трассы{% endblock %}
 
 {% block content %}
-<h2>Трассы</h2>
-{% for track in tracks %}
-<a href="{% url 'main:track_detail' pk=track.pk %}">
-	<img src="{{track.flag.url }}" class="rounded-0" alt="Адаптивные изображения">
-</a>
-{% endfor %}
+
+	<h2>Трассы</h2>
+
+	{% for track in tracks %}
+		<a href="{% url 'main:track_detail' pk=track.pk %}">
+			<img src="{{track.flag.url }}" class="rounded-0" alt="флаг">
+		</a>
+	{% endfor %}
+
 {% endblock %}
 
 

@@ -58,6 +58,7 @@ class Driver(models.Model):
 	podiums= models.IntegerField(default=True, verbose_name='Кол-во подиумов')
 	best_laps= models.IntegerField(default=True, verbose_name='Кол-во лучших кругов')
 	championship_win = models.IntegerField(default=True, verbose_name='Побед в чемпионате')
+	scores_season = models.IntegerField(default=0, verbose_name='Очков в сезоне')
 
 
 	def __str__(self):
@@ -70,6 +71,7 @@ class Driver(models.Model):
 	class Meta:
 		verbose_name = 'Пилот'
 		verbose_name_plural = 'Пилоты'
+
 
 class Team(models.Model):
 	"""Команда"""
@@ -87,7 +89,7 @@ class Team(models.Model):
 	podiums= models.IntegerField(default=True, verbose_name='Кол-во подиумов')
 	best_laps= models.IntegerField(default=True, verbose_name='Кол-во лучших кругов')
 	constructors_win = models.IntegerField(default=True, verbose_name='Побед в Кубке конструкторов')
-	
+	scores_season = models.IntegerField(default=0, verbose_name='Очков в сезоне')
 
 	def __str__(self):
 		return self.name
@@ -97,6 +99,7 @@ class Team(models.Model):
 	class Meta:
 		verbose_name = 'Команда'
 		verbose_name_plural = 'Команды'
+
 
 class Track(models.Model):
 	"""Трасса"""
@@ -137,6 +140,7 @@ class Comment(models.Model):
 		verbose_name_plural = 'Комментарии'
 		verbose_name = 'Комментарий'
 		ordering = ['created_at']
+	
 				
 class Post(models.Model):
 	"""Статья"""
