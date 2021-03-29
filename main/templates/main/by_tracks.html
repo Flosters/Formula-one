@@ -7,11 +7,11 @@
 
 {% block content %}
 
-	<h2>Трассы</h2>
+	<h2 style="text-align: center;">Трассы</h2>
 
 	{% for track in tracks %}
 		<a href="{% url 'main:track_detail' pk=track.pk %}">
-			<img src="{{track.flag.url }}" class="rounded-0" alt="флаг">
+			<img class="track-flag" src="{{track.flag.url }}" class="rounded-0" alt="флаг">
 		</a>
 	{% endfor %}
 

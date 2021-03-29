@@ -161,22 +161,22 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
 	template_name = 'main/password_reset_complete.html'
 
 
-# кеширование страницы 600 сек
-@cache_page(600)
+
 def by_drivers(request):
 	"""Вывод всех пилотов"""
 	drivers = Driver.objects.all()
 	# Использование пагинатора
-	paginator = Paginator(drivers, 10)
+	paginator = Paginator(drivers, 8)
 	if 'page' in request.GET:
 		page_num = request.GET['page']
 	else:
 		page_num = 1
 	page = paginator.get_page(page_num)
+
 	context = {'page': page, 'drivers': page.object_list}
 	return render(request, 'main/by_drivers.html', context)
 
-
+# кеширование страницы 600 сек
 @cache_page(600)
 def by_teams(request):
 	"""Вывод всех команд"""
@@ -185,7 +185,7 @@ def by_teams(request):
 	return render(request, 'main/by_teams.html', context)
 
 
-@cache_page(600)
+
 def by_tracks(request):
 	"""Вывод всех трасс"""
 	tracks = Track.objects.all()
@@ -193,7 +193,7 @@ def by_tracks(request):
 	return render(request, 'main/by_tracks.html', context)
 
 
-@cache_page(600)
+
 def team_detail(request, pk):
 	"""Подробно о команде"""
 	team = get_object_or_404(Team, pk=pk)
@@ -202,7 +202,7 @@ def team_detail(request, pk):
 	return render(request, 'main/team_detail.html', context)
 
 
-@cache_page(600)
+
 def driver_detail(request, pk):
 	"""Подробно о гонщике"""
 	driver = get_object_or_404(Driver, pk=pk)
@@ -233,7 +233,7 @@ def driver_detail(request, pk):
 	return render(request, 'main/driver_detail.html', context)	
 	
 
-@cache_page(600)
+
 def track_detail(request, pk):
 	"""Подробно о трассе"""
 	track = get_object_or_404(Track, pk=pk)

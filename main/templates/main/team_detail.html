@@ -7,26 +7,27 @@
 
 {% block content %}
 
-    <h2 class="mb-2">{{ team.name }}</h2>
+    <h2 class="mb-2" style="text-align: center;">{{ team.name }}</h2>
 
     <div class="card mb-3">
         <img src="{{ team.team_car_image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text">Страна: {{ team.country }}</p>
-            <p class="card-text">Дебют в Формуле 1: {{ team.debut_in_f1 }}</p>
+            <p class="card-text"><b>Страна:</b> {{ team.country }}</p>
+            <p class="card-text"><b>Дебют в Формуле 1:</b> {{ team.debut_in_f1 }}</p>
         </div>
     </div>
 
-    <h4>Пилоты</h4>
+    <h4 style="text-align: center;">Пилоты</h4>
 
     {% if drivers %}
-        <ul class="list-unstyled">
+        <div class="d-flex justify-content-around">
             {% for driver in drivers %}
-                <div class="card mb-3" style="max-width: 540px;">
+                <div class="card mb-3" style="max-width: 45%;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <img src="{{ driver.image.url }}" class="card-img" alt="<>">
                         </div>
+                        
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{ driver.first_name }} {{ driver.last_name }}</a></h5>
@@ -39,7 +40,7 @@
                     </div>
                 </div>
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 
     <h5>Статистика команды</h5>
@@ -72,6 +73,6 @@
 
     <p>* КК - Кубок Конструкторов</p>
     <h5>История команды</h5>
-    <p>{{ team.team_history }}</p>
+    <p class="text-field">{{ team.team_history }}</p>
 
 {% endblock %}

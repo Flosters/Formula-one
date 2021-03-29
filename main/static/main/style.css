@@ -89,3 +89,24 @@ footer {
 .d-flex {
       flex-wrap: wrap;
 }
+
+.text-field {
+      background-color: #c8dbd7;
+      border: 2px solid black;
+      margin: 20px;
+      padding-top: 20px;
+      padding-left: 10px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      font-size: 16px;
+}
+
+
+.table-bordered {
+      background-color: #c8dbd7;
+}
+
+.track-flag {
+     mix-blend-mode: multiply;
+
+}
