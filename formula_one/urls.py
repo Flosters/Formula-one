@@ -27,6 +27,8 @@ urlpatterns = [
     path('api/', include('api.urls')),
 ]
 
+
 if settings.DEBUG:
+    # Отключение кеширования статичных файлов
     urlpatterns.append(path('static/<path:path>', never_cache(serve)))
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

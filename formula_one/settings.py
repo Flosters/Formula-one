@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0j4mxm03an9nc*1zaeg%ka2o(f5a+)72^_x&33$g4rnu0g8jvn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -147,7 +147,14 @@ AUTH_USER_MODEL = 'main.AdvUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-DEFAULT_FROM_EMAIL = 'admin@formula_one'
+
+
+EMAIL_HOST='smtp.gmail.com'
+
+
+
+
+DEFAULT_FROM_EMAIL = 'admin@formula_one.ru'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
