@@ -143,6 +143,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
+
 AUTH_USER_MODEL = 'main.AdvUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
